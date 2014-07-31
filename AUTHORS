@@ -1,0 +1,12 @@
+Anders Gidenstam  (anders(at)gidenstam.org)
+  - Gokstad FlightGear configuration
+  - Gokstad Flight/Hydrodynamics Model configuration
+  - Gokstad 3d model
+
+The model borrows content from the following authors' contributions
+to FlightGear:
+
+
+Dependencies (i.e. install these aircraft):
+
+Aircraft/MTB_20m        (Aircraft/MTB_20m/Models/water.xml)

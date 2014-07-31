@@ -1,0 +1,534 @@
+<?xml version="1.0"?>
+<!--
+
+  The Gokstad ship "flight" model for JSBSim.
+
+    Copyright (C) 2013 - 2014  Anders Gidenstam  (anders(at)gidenstam.org)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+  
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+  
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  
+-->
+<?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
+<fdm_config name="Gokstad" version="2.0" release="ALPHA"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
+
+ <fileheader>
+  <author>Anders Gidenstam</author>
+  <email>anders at gidenstam dot org</email>
+
+  <filecreationdate>2013-02-18</filecreationdate>
+  <version>2014-07-31</version>
+
+  <description>Models the Gokstad ship.</description>
+
+  <license>
+   <licenseName>GPL</licenseName>
+   <licenseURL>http://www.gnu.org/licenses/gpl.html</licenseURL>
+  </license>
+  <note>
+   This model was created using publicly available data, publicly available
+   technical reports, textbooks, and guesses. It contains no proprietary or
+   restricted data. It has been validated only to the extent that it may seem
+   to "fly right", and possibly to comply to published, publicly known, 
+   performance data (maximum speed, endurance, etc.).
+
+   This model is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+  </note>
+
+  <reference refID="Eskerod:1970:BATAR"
+             author="Albert Eskeröd"
+             title="Båtar  Från ekstock till trålare"
+             date="1970"/>
+
+  <reference refID="Nicolaysen:1882:LFG"
+             author="Nicolay Nicolaysen"
+             title="The Viking-ship discovered at Gokstad in Norway"
+             date="1882"/>
+
+  <reference refID="Sjovold:1985:TVSO"
+             author="Thorleif Sjøvold"
+             title="The Viking Ships in Oslo"
+             date="1985"/>
+
+ </fileheader>
+
+ <documentation>
+  The origin of the structural frame is at the bow of the ship at the
+  keel level.
+  See the 3d model.
+ </documentation>
+
+ <metrics>
+  <wingarea unit="M2">   89.6 </wingarea>
+  <wingspan unit="M">    12.8 </wingspan>
+  <chord unit="M">        7.0 </chord>
+  <htailarea unit="M2">   2.0 </htailarea> <!-- FIXME: update these -->
+  <htailarm unit="M">    11.5 </htailarm>
+  <vtailarea unit="M2">   2.0 </vtailarea>
+  <vtailarm unit="M">     3.0 </vtailarm>
+   <location name="AERORP" unit="M">
+    <x> 11.00 </x> <!-- Ahead of the mast to aide course stability. -->
+    <y>  0.00 </y>
+    <z>  6.00 </z>
+   </location>
+   <location name="EYEPOINT" unit="M">
+    <x> 20.50 </x>
+    <y>  2.50 </y>
+    <z>  0.00 </z>
+   </location>
+   <location name="VRP" unit="M">
+    <x> 0.00 </x>
+    <y> 0.00 </y>
+    <z> 0.00 </z>
+   </location>
+ </metrics>
+
+ <mass_balance>
+  <documentation>
+   Information from ([Sjovold:1985:TVSO], pp.56.)
+     Length:       23.24m
+     Displacement: 20200 kg (fully equipped, estimated)
+
+  </documentation>
+  <documentation>
+    Rough model to estimate CG and inertia tensor.
+
+    % Steiners theorem:
+    % Ixx = \bar{Ixx} + m sqrt(\bar{y}^2 + \bar{z}^2)
+    % Ixy = \bar{Ixy} + m \bar{x} \bar{y}
+
+    % The hull is a uniform 20.00x5.00x2.00 meter box.
+    % CG in the middle (i.e. at (10, 0, 1)) m.
+    m_hull = 20200 % KG
+    a = 20.00    % m
+    b = 5.0      % m
+    c = 2.0      % m
+
+    Ixx_hull = 1/12 * m_hull * (b^2 + c^2)
+    Iyy_hull = 1/12 * m_hull * (a^2 + c^2)
+    Izz_hull = 1/12 * m_hull * (a^2 + b^2)
+    Ixy_hull = Ixz_hull = Iyz_hull = 0
+
+    Ixx = Ixx_hull
+    Iyy = Iyy_hull
+    Izz = Izz_hull
+    Ixy = Ixy_hull
+    Ixz = Ixz_hull
+    Iyz = Iyz_hull
+  </documentation>
+  <ixx unit="KG*M2"> 4.8817e+04 </ixx>
+  <iyy unit="KG*M2"> 6.8007e+05 </iyy>
+  <izz unit="KG*M2"> 7.1542e+05 </izz>
+  <emptywt unit="KG" > 20200 </emptywt>
+  <location name="CG" unit="M">
+   <x> 11.62 </x>
+   <y>  0.00 </y>
+   <z>  1.00 </z>
+  </location>
+
+  <documentation>
+   Adjustable payload pointmasses.
+  </documentation>
+
+  <!-- Cargo weights. -->
+  <pointmass name="Forward cargo">
+   <weight unit="KG"> 0.0 </weight>
+   <location unit="M">
+    <x> 7.00 </x>
+    <y>  0.00 </y>
+    <z>  0.80 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Aft cargo">
+   <weight unit="KG"> 0.0 </weight>
+   <location unit="M">
+    <x> 16.00 </x>
+    <y>  0.00 </y>
+    <z>  0.80 </z>
+   </location>
+  </pointmass>
+
+  <!-- Fixed weights. -->
+
+ </mass_balance>
+
+ <ground_reactions>
+  <documentation>
+   The hydrodynamic interactions of the hull are modelled by external forces.
+  </documentation>
+
+  <contact type="STRUCTURE" name="BOW">
+   <location unit="M">
+    <x>   0.00 </x>
+    <y>   0.00 </y>
+    <z>   4.00 </z>
+   </location>
+   <static_friction>  0.00 </static_friction>
+   <dynamic_friction> 0.00 </dynamic_friction>
+   <spring_coeff unit="LBS/FT">      20000.00 </spring_coeff>
+   <damping_coeff unit="LBS/FT/SEC"> 15000.00 </damping_coeff>
+  </contact>
+
+  <contact type="STRUCTURE" name="STERN">
+   <location unit="M">
+    <x>  23.24 </x>
+    <y>   0.00 </y>
+    <z>   4.00 </z>
+   </location>
+   <static_friction>  0.00 </static_friction>
+   <dynamic_friction> 0.00 </dynamic_friction>
+   <spring_coeff unit="LBS/FT">      20000.00 </spring_coeff>
+   <damping_coeff unit="LBS/FT/SEC"> 15000.00 </damping_coeff>
+  </contact>
+
+  <contact type="STRUCTURE" name="PORT SIDE">
+   <location unit="M">
+    <x> 11.62 </x>
+    <y> -2.50 </y>
+    <z>  3.50 </z>
+   </location>
+   <static_friction>  0.00 </static_friction>
+   <dynamic_friction> 0.00 </dynamic_friction>
+   <spring_coeff unit="LBS/FT">      20000.00 </spring_coeff>
+   <damping_coeff unit="LBS/FT/SEC"> 15000.00 </damping_coeff>
+  </contact>
+  <contact type="STRUCTURE" name="STARBOARD SIDE">
+   <location unit="M">
+    <x> 11.62 </x>
+    <y>  2.50 </y>
+    <z>  3.50 </z>
+   </location>
+   <static_friction>  0.00 </static_friction>
+   <dynamic_friction> 0.00 </dynamic_friction>
+   <spring_coeff unit="LBS/FT">      20000.00 </spring_coeff>
+   <damping_coeff unit="LBS/FT/SEC"> 15000.00 </damping_coeff>
+  </contact>
+
+ </ground_reactions>
+
+ <propulsion>
+  <documentation>
+  </documentation>
+ </propulsion>
+
+ <external_reactions>
+
+  <documentation>
+   HRP: 11.62, 0, 2.00 m
+  </documentation>
+
+  <force name="hydro-X" frame="LOCAL" unit="LBS">
+   <location unit="M">
+    <x>  11.62 </x>
+    <y>   0.00 </y>
+    <z>   2.00 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="hydro-Y" frame="LOCAL" unit="LBS">
+   <location unit="M">
+    <x>  11.62 </x>
+    <y>   0.00 </y>
+    <z>   2.00 </z>
+   </location>
+   <direction>
+    <x> 0.0 </x>
+    <y> 1.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="hydro-Z" frame="LOCAL" unit="LBS">
+   <location unit="M">
+    <x>  11.62 </x>
+    <y>   0.00 </y>
+    <z>   2.00 </z>
+   </location>
+   <direction>
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z>-1.0 </z>
+   </direction>
+  </force>
+
+  <force name="hydro-pitch[0]" frame="LOCAL" unit="LBS">
+   <location unit="M">
+    <x>  11.3152 </x>
+    <y>   0.00 </y>
+    <z>   2.00 </z>
+   </location>
+   <direction>
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z>-1.0 </z>
+   </direction>
+  </force>
+  <force name="hydro-pitch[1]" frame="LOCAL" unit="LBS">
+   <location unit="M">
+    <x>  11.9248 </x>
+    <y>   0.00 </y>
+    <z>   2.00 </z>
+   </location>
+   <direction>
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z>-1.0 </z>
+   </direction>
+  </force>
+
+  <force name="hydro-roll[0]" frame="LOCAL" unit="LBS">
+   <location unit="M">
+    <x>  11.62 </x>
+    <y>  -0.3048 </y>
+    <z>   2.00 </z>
+   </location>
+   <direction>
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z>-1.0 </z>
+   </direction>
+  </force>
+  <force name="hydro-roll[1]" frame="LOCAL" unit="LBS">
+   <location unit="M">
+    <x>  11.62 </x>
+    <y>   0.3048 </y>
+    <z>   2.00 </z>
+   </location>
+   <direction>
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z>-1.0 </z>
+   </direction>
+  </force>
+
+  <force name="hydro-yaw[0]" frame="BODY" unit="LBS">
+   <location unit="M">
+    <x>  11.62 </x>
+    <y>  -0.3048 </y>
+    <z>   2.00 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="hydro-yaw[1]" frame="BODY" unit="LBS">
+   <location unit="M">
+    <x>  11.62 </x>
+    <y>   0.3048 </y>
+    <z>   2.00 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+
+  <force name="mooring-north" frame="LOCAL" unit="LBS">
+   <location unit="FT">
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z> 3.0 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="mooring-east" frame="LOCAL" unit="LBS">
+   <location unit="FT">
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z> 3.0 </z>
+   </location>
+   <direction>
+    <x> 0.0 </x>
+    <y> 1.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="mooring-down" frame="LOCAL" unit="LBS">
+   <location unit="FT">
+     <x> 0.0 </x>
+     <y> 0.0 </y>
+     <z> 3.0 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+
+ </external_reactions>
+
+ <system name="steering gear">
+  <channel name="steering">
+
+   <summer name="tmp/rudder-pos-norm">
+    <input>fcs/rudder-cmd-norm</input>
+    <clipto>
+     <min> -1 </min>
+     <max>  1 </max>
+    </clipto>
+    <output>fcs/rudder-pos-norm</output>
+   </summer>
+
+  </channel>
+
+ </system>
+ <system name="sail">
+
+  <channel name="orientation">
+
+   <switch name="fcs/sail/brace-speed-norm">
+    <default value="fcs/sail-brace-speed-cmd-norm"/>
+    <test logic="AND" value="0.0">
+     fcs/aileron-cmd-norm GE 0.0
+     fcs/sail/brace-pos-norm GE 1.00
+    </test>
+    <test logic="AND" value="0.0">
+     fcs/aileron-cmd-norm LE 0.0
+     fcs/sail/brace-pos-norm LE -1.00
+    </test>
+   </switch>
+
+   <integrator name="fcs/sail/brace-pos-norm">
+    <input>fcs/sail/brace-speed-norm</input>
+    <c1>0.0667</c1>
+    <clipto>
+     <min>-1.0</min>
+     <max>1.0</max>
+    </clipto>
+    <output>fcs/sail-brace-pos-norm</output>
+   </integrator>
+
+   <pure_gain name="fcs/sail/brace-pos-deg">
+    <input>fcs/sail/brace-pos-norm</input>
+    <gain>60.0</gain>
+    <output>fcs/sail-brace-pos-deg</output>
+   </pure_gain>
+
+   <pure_gain name="fcs/sail/brace-pos-rad">
+    <input>fcs/sail/brace-pos-deg</input>
+    <gain>0.017453293</gain>
+    <output>fcs/sail-brace-pos-rad</output>
+   </pure_gain>
+
+  </channel>
+
+  <channel name="reefing">
+
+   <aerosurface_scale name="fcs/sail/reef-pos-norm">
+    <input>fcs/sail-reef-cmd-norm</input>
+    <domain>
+     <min> 0 </min>
+     <max> 1 </max>
+    </domain>
+    <range>
+     <min>  0 </min>
+     <max>  1 </max>
+    </range>
+    <output>fcs/sail-reef-pos-norm</output>
+   </aerosurface_scale>
+
+  </channel>
+
+ </system>
+
+ <system file="hydrodynamics"/>
+ <system file="Gokstad-hydrodynamics"/>
+
+ <!-- system file="fgfs4jsbsim" -->
+ <!-- system file="mooring-jsbsim" -->    <!-- Mooring setup for FlightGear. -->
+  <!-- Configuration -->
+  <!--  Mooring rope -->
+  <!-- property value="250.0"> mooring/rope-spring-coeff-lbs_ft </property>
+  <property value="10000.0"> mooring/max-rope-force-lbs </property>
+  <property value="20.0"> mooring/rope-length-ft </property>
+ </system -->
+
+ <aerodynamics>
+
+  <function name="aero/sail-beta-rad">
+   <description>Beta angle for the sail. 0 means a straight on head wind.</description>
+   <sum>
+    <value>0.0</value>
+    <property>aero/beta-rad</property>
+    <property>fcs/sail-brace-pos-rad</property>
+   </sum>
+  </function>
+
+  <function name="aero/sail-beta-deg">
+   <product>
+    <value>57.29578</value>
+    <property>aero/sail-beta-rad</property>
+   </product>
+  </function>
+
+  <axis name="DRAG"> <!-- FIXME! -->
+
+   <function name="aero/force/D_sail">
+    <description>Drag force due to sail</description>
+    <product>
+     <property>aero/qbar-psf</property>
+     <property>metrics/Sw-sqft</property>
+     <!-- Start CD -->
+     <property>fcs/sail/reef-pos-norm</property>
+     <value>1.28</value> <!-- Approximation: Flat plate. -->
+     <abs>
+      <!-- Wild guess. -->
+      <cos><property>aero/sail-beta-rad</property></cos>
+     </abs>
+    </product>
+   </function>
+
+  </axis>
+
+  <axis name="SIDE"> <!-- FIXME! -->
+
+   <function name="aero/force/Y_sail">
+    <description>Side force due to sail</description>
+    <product>
+     <property>aero/qbar-psf</property>
+     <property>metrics/Sw-sqft</property>
+     <!-- Start CY -->
+     <property>fcs/sail/reef-pos-norm</property>
+     <!-- Wild guess approximation. Max at a beta of 45+n*90 deg. -->
+     <value>0.28</value>
+     <sin>
+      <product>
+       <value>2.0</value>
+       <property>aero/sail-beta-rad</property>
+      </product>
+     </sin>
+    </product>
+   </function>
+
+  </axis>
+
+ </aerodynamics>
+
+</fdm_config>

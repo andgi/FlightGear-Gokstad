@@ -1,0 +1,264 @@
+<?xml version="1.0"?>
+<!--
+  The Gokstad ship for FlightGear.
+
+  Copyright (C) 2014  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <path>Gokstad.ac</path>
+ <offsets>
+  <!-- x/y/z == back/right/up. -->
+  <x-m> 0.00 </x-m>
+  <z-m> 0.00 </z-m>
+ </offsets>
+
+ <!-- Shader effects -->
+ <!-- effect>
+  <inherits-from>Effects/reflect</inherits-from>
+  <object-name></object-name>
+ </effect -->
+
+ <!-- Rembrandt transparency markup. -->
+ <!-- effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <object-name></object-name>
+ </effect -->
+
+ <!-- Livery selection =====================================================-->
+ <!-- animation>
+  <type>material</type>
+  <object-name></object-name>
+  <property-base>sim/model/livery</property-base>
+  <texture-prop>texture</texture-prop>
+  <texture>Liveries/.png</texture>
+ </animation -->
+
+ <!-- Animations ===========================================================-->
+ <animation>
+  <type>rotate</type>
+  <object-name>mast</object-name>
+  <object-name>yard</object-name>
+  <object-name>sail</object-name>
+  <property>surface-positions/sail-bearing-deg</property>
+  <factor>-1.0</factor>
+  <offset-deg>0.0</offset-deg>
+  <center>
+   <x-m> 11.64 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  0.00 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 0.0 </y>
+   <z> 1.0 </z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>scale</type>
+  <object-name>sail</object-name>
+  <property>surface-positions/sail-reef-norm</property>
+  <x-factor>0.0</x-factor>
+  <x-offset>1.0</x-offset>
+  <y-factor>0.0</y-factor>
+  <y-offset>1.0</y-offset>
+  <z-factor>0.9</z-factor>
+  <z-offset>0.1</z-offset>
+  <z-min>0.10</z-min>
+  <z-max>1.00</z-max>
+  <center>
+   <x-m> 11.64 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  9.40 </z-m>
+  </center>
+ </animation>
+
+ <!-- Particle effects ======================================================-->
+ <model>
+  <name>Fore Port</name>
+  <overlay>
+   <particlesystem>
+    <shooter>
+     <phi-min-deg>-80.0</phi-min-deg>
+     <phi-max-deg>-100.0</phi-max-deg>
+    </shooter>
+   </particlesystem>
+  </overlay>
+  <path>Aircraft/MTB_20m/Models/Effects/wake.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m>  2.00 </x-m>
+   <y-m> -0.50 </y-m>
+   <z-m>  1.00 </z-m>
+  </offsets>
+ </model>
+ <model>
+  <name>Fore Starboard</name>
+  <overlay>
+   <particlesystem>
+    <shooter>
+     <phi-min-deg>80.0</phi-min-deg>
+     <phi-max-deg>100.0</phi-max-deg>
+    </shooter>
+   </particlesystem>
+  </overlay>
+  <path>Aircraft/MTB_20m/Models/Effects/wake.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m>  2.00 </x-m>
+   <y-m>  0.50 </y-m>
+   <z-m>  1.00 </z-m>
+  </offsets>
+ </model>
+
+ <animation>
+  <type>translate</type>
+  <object-name>Fore Port</object-name>
+  <object-name>Fore Starboard</object-name>
+  <property>fdm/jsbsim/hydro/vbx-fps</property>
+  <interpolation>
+   <entry><ind>0.0</ind><dep>0.0</dep></entry>
+   <entry><ind>84.0</ind><dep>-0.4</dep></entry>
+  </interpolation>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>Fore Port</object-name>
+  <object-name>Fore Starboard</object-name>
+  <property>orientation/roll-deg</property>
+  <offset-deg>0.0</offset-deg>
+  <factor>1.0</factor>
+  <center>
+   <x-m>  0.00 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  1.00 </z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>translate</type>
+  <object-name>Fore Port</object-name>
+  <object-name>Fore Starboard</object-name>
+  <property>fdm/jsbsim/hydro/vbx-fps</property>
+  <interpolation>
+   <entry><ind>0.0</ind><dep>0.0</dep></entry>
+   <entry><ind>84.0</ind><dep>3.0</dep></entry>
+  </interpolation>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>translate</type>
+  <object-name>Fore Port</object-name>
+  <property>fdm/jsbsim/hydro/vbx-fps</property>
+  <interpolation>
+   <entry><ind>0.0</ind><dep>0.0</dep></entry>
+   <entry><ind>84.0</ind><dep>1.0</dep></entry>
+  </interpolation>
+  <axis>
+   <x>0.0</x>
+   <y>-1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>translate</type>
+  <object-name>Fore Starboard</object-name>
+  <property>fdm/jsbsim/hydro/vbx-fps</property>
+  <interpolation>
+   <entry><ind>0.0</ind><dep>0.0</dep></entry>
+   <entry><ind>84.0</ind><dep>1.0</dep></entry>
+  </interpolation>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <!-- Water ================================================================-->
+ <model>
+  <name>Water</name>
+  <path>Aircraft/MTB_20m/Models/water.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m>11.62</x-m>
+   <y-m>0.00</y-m>
+   <z-m>2.00</z-m>
+  </offsets>
+ </model>
+
+
+ <!-- Markers for debugging ================================================-->
+ <!-- model>
+  <name>Markers</name>
+  <path>Aircraft/MTB_20m/Models/markers.xml</path>
+  <offsets>
+   <x-m>11.62</x-m>
+   <y-m>0.00</y-m>
+   <z-m>0.00</z-m>
+  </offsets>
+ </model -->
+
+ <!-- LOD for the model as a whole =========================================-->
+ <animation>
+  <type>range</type>
+  <min-m>0</min-m>
+  <max-m>15000</max-m>
+ </animation>
+
+ <nasal>
+  <load>
+##############################################################################
+# The on-load Nasal is not executed when this file is loaded as the user
+# aircraft.
+##############################################################################
+var rplayer = cmdarg();
+print("LOAD Gokstad ", rplayer.getPath());
+
+# Set up property aliases for animations.
+#  Waves.
+rplayer.getNode("environment/waves/time-sec", 1).
+  alias(rplayer.getNode("sim/multiplay/generic/float[0]"));
+rplayer.getNode("environment/waves/from-deg", 1).
+  alias(rplayer.getNode("sim/multiplay/generic/float[1]"));
+rplayer.getNode("environment/waves/amplitude-ft", 1).
+  alias(rplayer.getNode("sim/multiplay/generic/float[2]"));
+rplayer.getNode("environment/waves/angular-frequency-rad_sec", 1).
+  alias(rplayer.getNode("sim/multiplay/generic/float[3]"));
+rplayer.getNode("environment/waves/wave-number-rad_ft", 1).
+  alias(rplayer.getNode("sim/multiplay/generic/float[4]"));
+rplayer.getNode("fdm/jsbsim/hydro/height-agl-ft", 1).
+  alias(rplayer.getNode("sim/multiplay/generic/float[5]"));
+
+# Set up livery support.
+#var livery_update =
+#  aircraft.livery_update.new("Aircraft/Gokstad/Models/Liveries", 10);
+
+##############################################################################
+  </load>
+  <unload>
+##############################################################################
+var rplayer = cmdarg();
+print("UNLOAD Gokstad ", rplayer.getPath());
+# Stop the livery support.
+#livery_update.stop();
+##############################################################################
+  </unload>
+ </nasal>
+
+</PropertyList>

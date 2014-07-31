@@ -1,0 +1,324 @@
+<?xml version="1.0"?>
+<!--
+  The Gokstad ship for FlightGear.
+
+  Copyright (C) 2013 - 2014  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <sim>
+
+  <description>The Gokstad ship.</description>
+  <author>Anders Gidenstam</author>
+  <aircraft-version>2014-07-31</aircraft-version>
+
+  <status type="string">alpha</status>
+  <rating>
+   <FDM type="int">1</FDM>
+   <systems type="int">0</systems>
+   <cockpit type="int">0</cockpit>
+   <model type="int">1</model>
+  </rating>
+
+  <flight-model>jsb</flight-model>
+  <aero>Gokstad</aero>
+  <!-- The higher rate seems to aide stability. -->
+  <model-hz type="double">480.0</model-hz>
+
+  <presets>
+   <onground type="bool">true</onground>
+   <!-- altitude-agl-ft type="double">6.0</altitude-agl-ft -->
+  </presets>
+  <startup>
+   <!-- splash-texture>Aircraft/Gokstad/splash.png</splash-texture -->
+  </startup>
+
+  <!-- 3d model -->
+  <model>
+   <path>Aircraft/Gokstad/Models/Gokstad.xml</path>
+   <livery>
+    <file type="string"></file>
+   </livery>
+  </model>
+
+  <!-- Views -->
+  <view n="0">
+   <!-- Pilot's position. -->
+   <name>Pilot View</name>
+   <internal>true</internal>
+   <config>
+    <!-- x/y/z == right/up/back -->
+    <x-offset-m type="double">  0.500 </x-offset-m>
+    <y-offset-m type="double">  2.500 </y-offset-m>
+    <z-offset-m type="double"> 20.500 </z-offset-m>
+    <pitch-offset-deg type="double"> 0.0 </pitch-offset-deg>
+   </config>
+  </view>
+  <view n="100">
+   <!-- Moving deck view. -->
+   <name>Deck View</name>
+   <internal>true</internal>
+   <config>
+    <!-- x/y/z == right/up/back -->
+    <from-model type="bool">true</from-model>
+    <from-model-idx type="int">0</from-model-idx>
+    <x-offset-m type="double"> -2.0 </x-offset-m>
+    <y-offset-m type="double">  2.7 </y-offset-m>
+    <z-offset-m type="double"> 10.0 </z-offset-m>
+    <pitch-offset-deg type="double"> 0.0 </pitch-offset-deg>
+    <default-field-of-view-deg type="double"> 65 </default-field-of-view-deg>
+   </config>
+  </view>
+
+  <!-- Move the center of the external views. -->
+  <view n="1">
+   <config>
+    <target-y-offset-m>  3.0 </target-y-offset-m>
+    <target-z-offset-m> 10.0 </target-z-offset-m>
+   </config>
+  </view>
+  <view n="2">
+   <config>
+    <target-y-offset-m>  3.0 </target-y-offset-m>
+    <target-z-offset-m> 10.0 </target-z-offset-m>
+   </config>
+  </view>
+  <view n="3">
+   <config>
+    <target-y-offset-m>  3.0 </target-y-offset-m>
+    <target-z-offset-m> 10.0 </target-z-offset-m>
+   </config>
+  </view>
+  <view n="5">
+   <config>
+    <target-y-offset-m>  3.0 </target-y-offset-m>
+    <target-z-offset-m> 10.0 </target-z-offset-m>
+   </config>
+  </view>
+  <view n="6">
+   <config>
+    <target-y-offset-m>  3.0 </target-y-offset-m>
+    <target-z-offset-m> 10.0 </target-z-offset-m>
+   </config>
+  </view>
+
+  <chase-distance-m type="double">-80.0</chase-distance-m>
+
+  <!-- sound>
+   <audible>true</audible>
+   <path>Aircraft/Gokstad/Sounds/sound.xml</path>
+  </sound -->
+
+  <!-- Aircraft specific help. -->
+  <!-- help include="help.xml"/ -->
+
+  <systems>
+   <electrical>
+    <path/>
+   </electrical>
+  </systems>
+  <instrumentation>
+   <!-- path>Aircraft/Gokstad/Systems/instrumentation.xml</path -->
+  </instrumentation>
+
+  <!-- Armament etc. -->
+  <!-- submodels>
+   <serviceable type="bool">true</serviceable>
+   <path></path>
+  </submodels -->
+
+  <multiplay>
+   <generic>
+   </generic>
+  </multiplay>
+
+  <max-simtime-per-frame n="0" type="double">0.1</max-simtime-per-frame>
+
+  <!-- menubar>
+   <default>
+    <menu n="100">
+     <label>The Gokstad ship</label>
+     <item>
+      <label>About</label>
+      <binding>
+       <command>nasal</command>
+       <script>Gokstad.about()</script>
+      </binding>
+     </item>
+     <item>
+      <label>Select Livery</label>
+      <binding>
+       <command>nasal</command>
+       <script>aircraft.livery.dialog.toggle()</script>
+      </binding>
+     </item>
+    </menu>
+   </default>
+  </menubar -->
+
+ </sim>
+
+ <controls>
+ </controls>
+
+ <payload>
+  <weight>
+   <name type="string">Forward cargo hold</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">8000.0</max-lb>
+  </weight>
+  <weight>
+   <name type="string">Aft cargo hold</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">8000.0</max-lb>
+  </weight>
+ </payload>
+
+ <!-- instrumentation n="0">
+ </instrumentation -->
+
+ <nasal>
+  <Gokstad>
+   <!-- file>Aircraft/Gokstad/Systems/</file -->
+   <script>
+###############################################################################
+var ground = func {
+    # Send the current ground level to the JSBSim hydrodynamics model.
+    var pos = geo.aircraft_position();
+    var material = geodinfo(pos.lat(), pos.lon());
+    if (contains(material[1], "solid") and !material[1].solid) {
+        setprop("/fdm/jsbsim/hydro/environment/water-level-ft",
+                getprop("/position/ground-elev-ft") +
+                getprop("/fdm/jsbsim/hydro/environment/wave-amplitude-ft"));
+    }
+
+    # Connect the FlightGear wave model to the JSBSim hydrodynamics wave model.
+    #setprop("/fdm/jsbsim/hydro/environment/waves-from-deg",
+    #        getprop("/environment/wave/angle") - 90.0);
+    #setprop("/fdm/jsbsim/hydro/environment/wave-amplitude-ft",
+    #        getprop("/environment/wave/amp"));
+    # Additional properties:
+    #   /environment/wave/dangle
+    #   /environment/wave/factor
+    #   /environment/wave/freq
+    #   /environment/wave/sharp
+
+    # Connect the JSBSim hydrodynamics wave model with the custom water shader.
+    setprop("environment/waves/time-sec",
+            getprop("/fdm/jsbsim/simulation/sim-time-sec"));
+    setprop("environment/waves/from-deg",
+            getprop("/fdm/jsbsim/hydro/environment/waves-from-deg"));
+    setprop("environment/waves/length-ft",
+            getprop("/fdm/jsbsim/hydro/environment/wave-length-ft"));
+    setprop("environment/waves/amplitude-ft",
+            getprop("/fdm/jsbsim/hydro/environment/wave-amplitude-ft"));
+    setprop("environment/waves/angular-frequency-rad_sec",
+            getprop("/fdm/jsbsim/hydro/environment/wave/angular-frequency-rad_sec"));
+    setprop("environment/waves/wave-number-rad_ft",
+            getprop("/fdm/jsbsim/hydro/environment/wave/wave-number-rad_ft"));
+
+
+    settimer(ground, 0.0);
+}
+
+var _initialized = 0;
+setlistener("/sim/signals/fdm-initialized", func {
+    if (_initialized) return;
+    #aircraft.livery.init("Aircraft/Gokstad/Models/Liveries");
+    settimer(ground, 0.0);
+    print("Hydrodynamics initialized.");
+    _initialized = 1;
+});
+
+###############################################################################
+# On-screen displays
+var left  = screen.display.new(20, 10);
+var right = screen.display.new(-300, 10);
+
+left.add("/fdm/jsbsim/sim-time-sec");
+left.add("/orientation/heading-magnetic-deg");
+left.add("/fdm/jsbsim/hydro/true-course-deg");
+left.add("/fdm/jsbsim/hydro/beta-deg");
+left.add("/fdm/jsbsim/hydro/pitch-deg");
+left.add("/fdm/jsbsim/hydro/roll-deg");
+left.add("/fdm/jsbsim/hydro/height-agl-ft");
+left.add("/fdm/jsbsim/hydro/hull/pitch-deg");
+left.add("/fdm/jsbsim/hydro/hull/roll-deg");
+left.add("/fdm/jsbsim/hydro/hull/height-agl-ft");
+left.add("/fdm/jsbsim/inertia/cg-x-in");
+left.add("/fdm/jsbsim/inertia/cg-z-in");
+left.add("/fdm/jsbsim/fcs/rudder-pos-norm");
+left.add("/fdm/jsbsim/hydro/fdrag-lbs");
+left.add("/fdm/jsbsim/hydro/displacement-drag-lbs");
+left.add("/fdm/jsbsim/hydro/planing-drag-lbs");
+left.add("/fdm/jsbsim/hydro/fbz-lbs");
+left.add("/fdm/jsbsim/hydro/buoyancy-lbs");
+left.add("/fdm/jsbsim/hydro/planing-lift-lbs");
+#left.add("/fdm/jsbsim/hydro/X/force-lbs");
+#left.add("/fdm/jsbsim/hydro/Y/force-lbs");
+left.add("/fdm/jsbsim/hydro/yaw-moment-lbsft");
+left.add("/fdm/jsbsim/hydro/pitch-moment-lbsft");
+left.add("/fdm/jsbsim/hydro/roll-moment-lbsft");
+left.add("/fdm/jsbsim/hydro/transverse-wave/wave-length-ft");
+left.add("/fdm/jsbsim/hydro/transverse-wave/wave-amplitude-ft");
+left.add("/fdm/jsbsim/hydro/transverse-wave/squat-ft");
+left.add("/fdm/jsbsim/hydro/transverse-wave/pitch-trim-change-deg");
+left.add("/fdm/jsbsim/hydro/environment/wave/relative-heading-rad");
+left.add("/fdm/jsbsim/hydro/orientation/wave-pitch-trim-change-deg");
+left.add("/fdm/jsbsim/hydro/orientation/wave-roll-trim-change-deg");
+left.add("/fdm/jsbsim/hydro/environment/wave/angular-frequency-rad_sec");
+left.add("/fdm/jsbsim/hydro/environment/wave/wave-number-rad_ft");
+left.add("/fdm/jsbsim/hydro/environment/wave/level-fwd-ft");
+left.add("/fdm/jsbsim/hydro/environment/wave/level-at-hrp-ft");
+left.add("/fdm/jsbsim/hydro/environment/wave/level-aft-ft");
+
+right.add("/environment/wind-from-heading-deg");
+right.add("/fdm/jsbsim/hydro/v-kt");
+right.add("/fdm/jsbsim/hydro/vbx-fps");
+right.add("/fdm/jsbsim/hydro/vby-fps");
+right.add("/fdm/jsbsim/hydro/qbar-u-psf");
+right.add("/fdm/jsbsim/hydro/Frode-number");
+right.add("/fdm/jsbsim/hydro/speed-length-ratio");
+right.add("/fdm/jsbsim/fcs/sail-brace-pos-deg");
+right.add("/fdm/jsbsim/fcs/sail-reef-pos-norm");
+right.add("/fdm/jsbsim/aero/sail-beta-deg");
+right.add("/fdm/jsbsim/aero/beta-deg");
+right.add("/fdm/jsbsim/aero/force/Y_sail");
+right.add("/fdm/jsbsim/aero/force/D_sail");
+right.add("/fdm/jsbsim/forces/fbx-aero-lbs");
+right.add("/fdm/jsbsim/forces/fby-aero-lbs");
+right.add("/fdm/jsbsim/forces/fbz-aero-lbs");
+#right.add("/fdm/jsbsim/");
+###############################################################################
+   </script>
+  </Gokstad>
+  <!-- Walk View -->
+  <!-- walkview>
+   <file>Aircraft/Generic/WalkView/walkview.nas</file>
+  </walkview>
+  <walkviews>
+   <file>Aircraft/Gokstad/Systems/walk-views.nas</file>
+  </walkviews -->
+ </nasal>
+
+ <input>
+  <keyboard include="Aircraft/Generic/WalkView/walk-view-keys.xml">
+   <!-- Keyboard commands -->
+  </keyboard>
+ </input>
+
+ <fdm>
+  <jsbsim>
+   <fcs>
+    <sail-brace-speed-cmd-norm alias="/controls/flight/aileron"/>
+    <sail-reef-cmd-norm alias="/controls/engines/engine[0]/throttle"/>
+    <sail-brace-pos-deg alias="/surface-positions/sail-bearing-deg"/>
+    <sail-reef-pos-norm alias="/surface-positions/sail-reef-norm"/>
+   </fcs>
+  </jsbsim>
+ </fdm>
+
+</PropertyList>
