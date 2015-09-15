@@ -3,7 +3,7 @@
 
   The Gokstad ship "flight" model for JSBSim.
 
-    Copyright (C) 2013 - 2014  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2013 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@
   <email>anders at gidenstam dot org</email>
 
   <filecreationdate>2013-02-18</filecreationdate>
-  <version>2014-07-31</version>
+  <version>2015-09-15</version>
 
   <description>Models the Gokstad ship.</description>
 
@@ -166,6 +166,8 @@
 
   <!-- Fixed weights. -->
 
+  <!-- Ballast. -->
+
  </mass_balance>
 
  <ground_reactions>
@@ -179,8 +181,8 @@
     <y>   0.00 </y>
     <z>   4.00 </z>
    </location>
-   <static_friction>  0.00 </static_friction>
-   <dynamic_friction> 0.00 </dynamic_friction>
+   <static_friction>  0.70 </static_friction>
+   <dynamic_friction> 0.60 </dynamic_friction>
    <spring_coeff unit="LBS/FT">      20000.00 </spring_coeff>
    <damping_coeff unit="LBS/FT/SEC"> 15000.00 </damping_coeff>
   </contact>
@@ -191,8 +193,8 @@
     <y>   0.00 </y>
     <z>   4.00 </z>
    </location>
-   <static_friction>  0.00 </static_friction>
-   <dynamic_friction> 0.00 </dynamic_friction>
+   <static_friction>  0.70 </static_friction>
+   <dynamic_friction> 0.60 </dynamic_friction>
    <spring_coeff unit="LBS/FT">      20000.00 </spring_coeff>
    <damping_coeff unit="LBS/FT/SEC"> 15000.00 </damping_coeff>
   </contact>
@@ -203,8 +205,8 @@
     <y> -2.50 </y>
     <z>  3.50 </z>
    </location>
-   <static_friction>  0.00 </static_friction>
-   <dynamic_friction> 0.00 </dynamic_friction>
+   <static_friction>  0.70 </static_friction>
+   <dynamic_friction> 0.60 </dynamic_friction>
    <spring_coeff unit="LBS/FT">      20000.00 </spring_coeff>
    <damping_coeff unit="LBS/FT/SEC"> 15000.00 </damping_coeff>
   </contact>
@@ -214,8 +216,8 @@
     <y>  2.50 </y>
     <z>  3.50 </z>
    </location>
-   <static_friction>  0.00 </static_friction>
-   <dynamic_friction> 0.00 </dynamic_friction>
+   <static_friction>  0.70 </static_friction>
+   <dynamic_friction> 0.60 </dynamic_friction>
    <spring_coeff unit="LBS/FT">      20000.00 </spring_coeff>
    <damping_coeff unit="LBS/FT/SEC"> 15000.00 </damping_coeff>
   </contact>
@@ -459,9 +461,37 @@
  </system>
 
  <system file="hydrodynamics"/>
+ <system file="hydrodynamic-planing">
+  <!-- Parameters defining the planing surfaces of the hull. -->
+  <!-- NOTE: Coordinates in the hydro RP frame. -->
+  <property value="59.88">hydro/planing/forebody-length-ft</property>
+  <property value="9.84">hydro/planing/forebody-beam-ft</property>
+  <property value="-5.58">hydro/planing/forebody-keel-z-ft</property>
+  <property value="29.95">hydro/planing/forebody-end-x-ft</property>
+
+  <property value="0.0">hydro/planing/middlebody-length-ft</property>
+  <property value="0.0">hydro/planing/middlebody-beam-ft</property>
+  <property value="0.0">hydro/planing/middlebody-keel-z-ft</property>
+  <property value="0.0">hydro/planing/middlebody-end-x-ft</property>
+
+  <property value="0.0">hydro/planing/afterbody-length-ft</property>
+  <property value="0.0">hydro/planing/afterbody-beam-ft</property>
+  <property value="0.0">hydro/planing/afterbody-keel-z-ft</property>
+  <property value="0.0">hydro/planing/afterbody-end-x-ft</property>
+
+  <property value="0.80">hydro/planing/forebody-normal-force-factor</property>
+  <property value="0.0">hydro/planing/middlebody-normal-force-factor</property>
+  <property value="0.0">hydro/planing/afterbody-normal-force-factor</property>
+
+  <!-- FIXME: Replace with Reynolds number based coefficient?
+  -->
+  <property value="0.020">hydro/planing/forebody-skin-friction-coefficient</property>
+  <property value="0.0">hydro/planing/middlebody-skin-friction-coefficient</property>
+  <property value="0.0">hydro/planing/afterbody-skin-friction-coefficient</property>
+
+ </system>
  <system file="Gokstad-hydrodynamics"/>
 
- <!-- system file="fgfs4jsbsim" -->
  <!-- system file="mooring-jsbsim" -->    <!-- Mooring setup for FlightGear. -->
   <!-- Configuration -->
   <!--  Mooring rope -->

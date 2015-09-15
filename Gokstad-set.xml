@@ -2,7 +2,7 @@
 <!--
   The Gokstad ship for FlightGear.
 
-  Copyright (C) 2013 - 2014  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2013 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -11,7 +11,7 @@
 
   <description>The Gokstad ship.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>2014-07-31</aircraft-version>
+  <aircraft-version>2015-09-15</aircraft-version>
 
   <status type="string">alpha</status>
   <rating>
@@ -276,6 +276,7 @@ left.add("/fdm/jsbsim/hydro/environment/wave/level-at-hrp-ft");
 left.add("/fdm/jsbsim/hydro/environment/wave/level-aft-ft");
 
 right.add("/environment/wind-from-heading-deg");
+right.add("/environment/wind-speed-kt");
 right.add("/fdm/jsbsim/hydro/v-kt");
 right.add("/fdm/jsbsim/hydro/vbx-fps");
 right.add("/fdm/jsbsim/hydro/vby-fps");
