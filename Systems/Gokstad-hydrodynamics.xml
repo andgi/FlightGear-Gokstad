@@ -266,8 +266,8 @@
        </min>
       </max>
      </product>
-     <max>
-      <value>-10.0</value>
+     <max> <!-- Squat is disabled as it misbehaves. -->
+      <value>0.0</value>
       <min>
        <property>hydro/transverse-wave/squat-ft</property>
        <value>0.0</value>
@@ -379,8 +379,7 @@
   <fcs_function name="hydro/planing-drag-lbs">
    <function>
     <description>Drag due to planing. FIXME: for Body-X axis.</description>
-    <product>
-     <value>-1.0</value>
+    <abs>
      <sum>
       <property>hydro/planing/forebody-induced-fbx-force-lbs</property>
       <property>hydro/planing/middlebody-induced-fbx-force-lbs</property>
@@ -389,7 +388,7 @@
       <property>hydro/planing/middlebody-friction-fbx-force-lbs</property>
       <property>hydro/planing/afterbody-friction-fbx-force-lbs</property>
      </sum>
-    </product>
+    </abs>
    </function>
   </fcs_function>
 
