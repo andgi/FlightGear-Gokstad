@@ -11,7 +11,7 @@
 
   <description>The Gokstad ship.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>2015-09-15</aircraft-version>
+  <aircraft-version>2015-11-06</aircraft-version>
 
   <status type="string">alpha</status>
   <rating>
@@ -297,12 +297,12 @@ right.add("/fdm/jsbsim/forces/fbz-aero-lbs");
    </script>
   </Gokstad>
   <!-- Walk View -->
-  <!-- walkview>
+  <walkview>
    <file>Aircraft/Generic/WalkView/walkview.nas</file>
   </walkview>
   <walkviews>
    <file>Aircraft/Gokstad/Systems/walk-views.nas</file>
-  </walkviews -->
+  </walkviews>
  </nasal>
 
  <input>
