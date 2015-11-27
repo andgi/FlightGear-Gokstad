@@ -586,7 +586,7 @@
      <property>hydro/qbar-u-psf</property>
      <property>hydro/hull-beam-ft3</property>
      <property>fcs/rudder-pos-norm</property>
-     <value>-0.05</value>
+     <value>-0.10</value>
     </product>
    </function>
   </fcs_function>
@@ -841,7 +841,7 @@
    </function>
   </fcs_function>
 
-  <fcs_function name="hydro/rudder-roll-moment-lbsft">
+  <!-- fcs_function name="hydro/rudder-roll-moment-lbsft">
    <documentation>
     Guessestimated roll moment due to rudder.
    </documentation>
@@ -854,7 +854,7 @@
      <value>-0.025</value>
     </product>
    </function>
-  </fcs_function>
+  </fcs_function -->
 
   <fcs_function name="hydro/damping-roll-moment-lbsft">
    <function>

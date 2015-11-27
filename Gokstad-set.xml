@@ -11,7 +11,7 @@
 
   <description>The Gokstad ship.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>2015-11-06</aircraft-version>
+  <aircraft-version>2015-11-27</aircraft-version>
 
   <status type="string">alpha</status>
   <rating>
@@ -283,12 +283,15 @@ right.add("/fdm/jsbsim/hydro/vby-fps");
 right.add("/fdm/jsbsim/hydro/qbar-u-psf");
 right.add("/fdm/jsbsim/hydro/Frode-number");
 right.add("/fdm/jsbsim/hydro/speed-length-ratio");
+right.add("/fdm/jsbsim/velocities/vc-kts");
+right.add("/fdm/jsbsim/aero/beta-deg");
+right.add("/fdm/jsbsim/aero/hull-beta-deg");
 right.add("/fdm/jsbsim/fcs/sail-brace-pos-deg");
 right.add("/fdm/jsbsim/fcs/sail-reef-pos-norm");
 right.add("/fdm/jsbsim/aero/sail-beta-deg");
-right.add("/fdm/jsbsim/aero/beta-deg");
-right.add("/fdm/jsbsim/aero/force/Y_sail");
-right.add("/fdm/jsbsim/aero/force/D_sail");
+right.add("/fdm/jsbsim/aero/sail-draft-depth-norm");
+right.add("/fdm/jsbsim/aero/force/Y_sail-lbs");
+right.add("/fdm/jsbsim/aero/force/D_sail-lbs");
 right.add("/fdm/jsbsim/forces/fbx-aero-lbs");
 right.add("/fdm/jsbsim/forces/fby-aero-lbs");
 right.add("/fdm/jsbsim/forces/fbz-aero-lbs");
@@ -311,6 +314,14 @@ right.add("/fdm/jsbsim/forces/fbz-aero-lbs");
   </keyboard>
  </input>
 
+ <surface-positions>
+  <sail-draft-depth-norm alias="/fdm/jsbsim/aero/sail-draft-depth-norm"/>
+ </surface-positions>
+
+ <orientation>
+  <beta-deg alias="/fdm/jsbsim/aero/hull-beta-deg"/>
+ </orientation>
+
  <fdm>
   <jsbsim>
    <fcs>
@@ -318,6 +329,7 @@ right.add("/fdm/jsbsim/forces/fbz-aero-lbs");
     <sail-reef-cmd-norm alias="/controls/engines/engine[0]/throttle"/>
     <sail-brace-pos-deg alias="/surface-positions/sail-bearing-deg"/>
     <sail-reef-pos-norm alias="/surface-positions/sail-reef-norm"/>
+    <sail-draft-depth-norm alias="/surface-positions/sail-reef-norm"/>
    </fcs>
   </jsbsim>
  </fdm>

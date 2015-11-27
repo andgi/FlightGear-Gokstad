@@ -2,7 +2,7 @@
 <!--
   The Gokstad ship for FlightGear.
 
-  Copyright (C) 2014  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2014 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -16,8 +16,9 @@
 
  <!-- Shader effects -->
  <!-- effect>
-  <inherits-from>Effects/reflect</inherits-from>
-  <object-name></object-name>
+  <inherits-from>Models/Effects/hull-normal-map</inherits-from>
+  <object-name>hull</object-name>
+  <object-name>hull.inside</object-name>
  </effect -->
 
  <!-- Rembrandt transparency markup. -->
@@ -60,19 +61,58 @@
   <type>scale</type>
   <object-name>sail</object-name>
   <property>surface-positions/sail-reef-norm</property>
-  <x-factor>0.0</x-factor>
-  <x-offset>1.0</x-offset>
+  <x-factor>0.95</x-factor>
+  <x-offset>0.05</x-offset>
+  <x-min>0.05</x-min>
+  <x-max>1.00</x-max>
   <y-factor>0.0</y-factor>
   <y-offset>1.0</y-offset>
-  <z-factor>0.9</z-factor>
-  <z-offset>0.1</z-offset>
-  <z-min>0.10</z-min>
+  <z-factor>0.95</z-factor>
+  <z-offset>0.05</z-offset>
+  <z-min>0.05</z-min>
   <z-max>1.00</z-max>
   <center>
-   <x-m> 11.64 </x-m>
+   <x-m> 11.49 </x-m>
    <y-m>  0.00 </y-m>
    <z-m>  9.40 </z-m>
   </center>
+ </animation>
+
+ <animation>
+  <type>scale</type>
+  <object-name>sail</object-name>
+  <property>surface-positions/sail-draft-depth-norm</property>
+  <x-factor>1.00</x-factor>
+  <x-offset>0.00</x-offset>
+  <x-min>0.00</x-min>
+  <x-max>1.00</x-max>
+  <y-factor>0.0</y-factor>
+  <y-offset>1.0</y-offset>
+  <z-factor>0.0</z-factor>
+  <z-offset>1.0</z-offset>
+  <center>
+   <x-m> 11.49 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  9.40 </z-m>
+  </center>
+ </animation>
+
+  <animation>
+  <type>rotate</type>
+  <object-name>weathervane</object-name>
+  <property>orientation/beta-deg</property>
+  <factor>1.0</factor>
+  <offset-deg>0.0</offset-deg>
+  <center>
+   <x-m> 11.64 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  0.00 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 0.0 </y>
+   <z> 1.0 </z>
+  </axis>
  </animation>
 
  <!-- Particle effects ======================================================-->
