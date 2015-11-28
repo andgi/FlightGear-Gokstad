@@ -539,14 +539,14 @@
     <product>
      <lt>
       <property>aero/tmp/hull-beta-deg</property>
-      <value>0.0</value>
+      <value>-180.0</value>
      </lt>
      <value>360.0</value>
     </product>
     <product>
      <gt>
       <property>aero/tmp/hull-beta-deg</property>
-      <value>360.0</value>
+      <value>180.0</value>
      </gt>
      <value>-360.0</value>
     </product>
@@ -557,7 +557,7 @@
    <description>Beta angle for the sail. 0 means wind straight on the edge of the sail, greater than 0 means wind from behind the sail.</description>
    <sum>
     <product>
-     <value>3.0</value>
+     <value>-1.0</value>
      <value>1.5707963</value>
     </product>
     <property>aero/hull-beta-rad</property>

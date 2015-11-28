@@ -361,7 +361,7 @@
    <function>
     <description>Drag due to displacement of hull</description>
     <product>
-     <value>0.000000125</value> <!-- Base Cd per lbs buoyancy. -->
+     <value>0.0000000625</value> <!-- Base Cd per lbs buoyancy. -->
      <property>hydro/qbar-psf</property>
      <property>hydro/hull-beam-ft2</property>
      <property>hydro/buoyancy-lbs</property>

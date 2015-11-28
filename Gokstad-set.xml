@@ -283,7 +283,6 @@ right.add("/fdm/jsbsim/hydro/vby-fps");
 right.add("/fdm/jsbsim/hydro/qbar-u-psf");
 right.add("/fdm/jsbsim/hydro/Frode-number");
 right.add("/fdm/jsbsim/hydro/speed-length-ratio");
-right.add("/fdm/jsbsim/velocities/vc-kts");
 right.add("/fdm/jsbsim/aero/beta-deg");
 right.add("/fdm/jsbsim/aero/hull-beta-deg");
 right.add("/fdm/jsbsim/fcs/sail-brace-pos-deg");
