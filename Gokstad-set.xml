@@ -2,7 +2,7 @@
 <!--
   The Gokstad ship for FlightGear.
 
-  Copyright (C) 2013 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2013 - 2016  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -11,12 +11,12 @@
 
   <description>The Gokstad ship.</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>2015-11-27</aircraft-version>
+  <aircraft-version>2016-09-02</aircraft-version>
 
   <status type="string">alpha</status>
   <rating>
    <FDM type="int">1</FDM>
-   <systems type="int">0</systems>
+   <systems type="int">1</systems>
    <cockpit type="int">0</cockpit>
    <model type="int">1</model>
   </rating>
@@ -105,10 +105,10 @@
 
   <chase-distance-m type="double">-80.0</chase-distance-m>
 
-  <!-- sound>
+  <sound>
    <audible>true</audible>
    <path>Aircraft/Gokstad/Sounds/sound.xml</path>
-  </sound -->
+  </sound>
 
   <!-- Aircraft specific help. -->
   <!-- help include="help.xml"/ -->
@@ -167,7 +167,7 @@
    <name type="string">Forward cargo hold</name>
    <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
    <min-lb type="double">0.0</min-lb>
-   <max-lb type="double">8000.0</max-lb>
+   <max-lb type="double">7500.0</max-lb>
   </weight>
   <weight>
    <name type="string">Aft cargo hold</name>
@@ -236,7 +236,7 @@ setlistener("/sim/signals/fdm-initialized", func {
 ###############################################################################
 # On-screen displays
 var left  = screen.display.new(20, 10);
-var right = screen.display.new(-300, 10);
+var right = screen.display.new(-250, 10);
 
 left.add("/fdm/jsbsim/sim-time-sec");
 left.add("/orientation/heading-magnetic-deg");
@@ -328,7 +328,6 @@ right.add("/fdm/jsbsim/forces/fbz-aero-lbs");
     <sail-reef-cmd-norm alias="/controls/engines/engine[0]/throttle"/>
     <sail-brace-pos-deg alias="/surface-positions/sail-bearing-deg"/>
     <sail-reef-pos-norm alias="/surface-positions/sail-reef-norm"/>
-    <sail-draft-depth-norm alias="/surface-positions/sail-reef-norm"/>
    </fcs>
   </jsbsim>
  </fdm>
