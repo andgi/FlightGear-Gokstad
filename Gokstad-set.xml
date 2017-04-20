@@ -2,7 +2,7 @@
 <!--
   The Gokstad ship for FlightGear.
 
-  Copyright (C) 2013 - 2016  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2013 - 2017  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -12,6 +12,16 @@
   <description>The Gokstad ship.</description>
   <author>Anders Gidenstam</author>
   <aircraft-version>2016-09-02</aircraft-version>
+
+  <long-description>
+The Gokstad ship is a karvi, a small type of Viking longship. It is a 24 meter long open clinker-built hull constructed from oak and was built some time around 900 AD. Some time after, maybe about 950 - 1000 AD, it was placed as grave furniture in and below a large burial mound near the Gokstad farm in southern Norway. The ship was rediscovered in 1880 when the mound was excavated by archaeologists. The clay soil had preserved most of the hull, but the exact nature of the rigging for the single large mast, generally believed to have carried a single large square sail below a single yard, is somewhat unclear.
+  </long-description>
+
+  <tags>
+   <tag>seacraft</tag>
+   <!-- tag>sail</tag -->
+   <!-- tag>viking-age</tag -->
+  </tags>
 
   <status type="string">alpha</status>
   <rating>
