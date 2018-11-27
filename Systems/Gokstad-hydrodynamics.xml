@@ -3,7 +3,7 @@
 
   The Gokstad ship "flight" model for JSBSim.
 
-    Copyright (C) 2013 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2013 - 2018  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -424,7 +424,7 @@
 
   <fcs_function name="hydro/planing-side-lbs">
    <function>
-    <description>Side force due to planing. FIXME: for Body-X axis.</description>
+    <description>Side force due to planing. FIXME: for Body-Y axis.</description>
     <product>
      <value>-1.0</value>
      <sum>
@@ -872,7 +872,7 @@
      <property>hydro/active-norm</property>
      <sum>
       <property>hydro/buoyancy-roll-moment-lbsft</property>
-      <property>hydro/fake-planing-roll-moment-lbsft</property>
+      <!-- property>hydro/fake-planing-roll-moment-lbsft</property -->
       <property>hydro/planing-roll-moment-lbsft</property>
       <property>hydro/damping-roll-moment-lbsft</property>
      </sum>
