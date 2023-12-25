@@ -6,7 +6,9 @@ Anders Gidenstam  (anders(at)gidenstam.org)
 The model borrows content from the following authors' contributions
 to FlightGear:
 
+Aircraft/c172p
+ - Water sounds Sounds/water-{fast,still}.wav.
 
 Dependencies (i.e. install these aircraft):
 
-Aircraft/MTB_20m        (Aircraft/MTB_20m/Models/water.xml)
+Aircraft/MTB_20m        (Aircraft/MTB_20m/{Models/water.xml,Sounds/water-{fast,still}.wav})

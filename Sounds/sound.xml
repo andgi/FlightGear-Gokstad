@@ -2,7 +2,7 @@
 <!--
   The Gokstad ship for FlightGear.
 
-  Copyright (C) 2016  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2016 - 2023  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -20,7 +20,7 @@
   <hull-in-water>
    <name>hull-in-water</name>
    <mode>looped</mode>
-   <path>Aircraft/c172p/Sounds/water-still.wav</path>
+   <path>Aircraft/MTB_20m/Sounds/water-still.wav</path>
    <condition>
     <greater-than>
      <property>/fdm/jsbsim/hydro/v-kt</property>
@@ -42,7 +42,7 @@
   <at-speed-in-water>
    <name>at-speed-in-water</name>
    <mode>looped</mode>
-   <path>Aircraft/c172p/Sounds/water-fast.wav</path>
+   <path>Aircraft/MTB_20m/Sounds/water-fast.wav</path>
    <condition>
     <greater-than>
      <property>/fdm/jsbsim/hydro/v-kt</property>

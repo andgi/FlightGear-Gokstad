@@ -3,7 +3,7 @@
 
   The Gokstad ship "flight" model for JSBSim.
 
-    Copyright (C) 2013 - 2018  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2013 - 2023  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@
   <email>anders at gidenstam dot org</email>
 
   <filecreationdate>2013-02-18</filecreationdate>
-  <version>2018-11-27</version>
+  <version>2023-12-23</version>
 
   <description>Models the Gokstad ship.</description>
 
@@ -137,9 +137,9 @@
     Ixz = Ixz_hull
     Iyz = Iyz_hull
   </documentation>
-  <ixx unit="KG*M2"> 4.8333e+04 </ixx>
-  <iyy unit="KG*M2"> 6.7333e+05 </iyy>
-  <izz unit="KG*M2"> 7.0833e+05 </izz>
+  <ixx unit="KG*M2">  48333 </ixx>
+  <iyy unit="KG*M2"> 673330 </iyy>
+  <izz unit="KG*M2"> 708330 </izz>
   <emptywt unit="KG" > 20000 </emptywt>
   <location name="CG" unit="M">
    <x> 11.62 </x>
@@ -178,6 +178,7 @@
  <ground_reactions>
   <documentation>
    The hydrodynamic interactions of the hull are modelled by external forces.
+   Remove these in JSBSim/standalone.
   </documentation>
 
   <contact type="STRUCTURE" name="BOW">
@@ -330,9 +331,9 @@
      <z> 3.0 </z>
    </location>
    <direction>
-    <x> 1.0 </x>
+    <x> 0.0 </x>
     <y> 0.0 </y>
-    <z> 0.0 </z>
+    <z> 1.0 </z>
    </direction>
   </force>
 
@@ -355,6 +356,7 @@
  </system>
  <system name="sail">
 
+  <!--property value="0.0">fcs/sail-brace-speed-cmd-norm</property-->
   <channel name="orientation">
 
    <switch name="fcs/sail/brace-speed-norm">
@@ -393,6 +395,7 @@
 
   </channel>
 
+  <!--property value="0.0">fcs/sail-reef-cmd-norm</property-->
   <channel name="reefing">
 
    <aerosurface_scale name="fcs/sail/reef-pos-norm">
