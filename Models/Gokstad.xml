@@ -2,7 +2,7 @@
 <!--
   The Gokstad ship for FlightGear.
 
-  Copyright (C) 2014 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2014 - 2015, 2025  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -100,7 +100,7 @@
   <animation>
   <type>rotate</type>
   <object-name>weathervane</object-name>
-  <property>orientation/beta-deg</property>
+  <property>fdm/jsbsim/aero/hull-beta-deg</property>
   <factor>1.0</factor>
   <offset-deg>0.0</offset-deg>
   <center>
@@ -129,8 +129,8 @@
   <path>Aircraft/MTB_20m/Models/Effects/wake.xml</path>
   <offsets>
    <!-- x/y/z == back/right/up -->
-   <x-m>  2.00 </x-m>
-   <y-m> -0.50 </y-m>
+   <x-m>  0.75 </x-m>
+   <y-m> -0.10 </y-m>
    <z-m>  1.00 </z-m>
   </offsets>
  </model>
@@ -147,8 +147,8 @@
   <path>Aircraft/MTB_20m/Models/Effects/wake.xml</path>
   <offsets>
    <!-- x/y/z == back/right/up -->
-   <x-m>  2.00 </x-m>
-   <y-m>  0.50 </y-m>
+   <x-m>  0.75 </x-m>
+   <y-m>  0.10 </y-m>
    <z-m>  1.00 </z-m>
   </offsets>
  </model>
